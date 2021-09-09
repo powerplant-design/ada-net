@@ -1,10 +1,12 @@
 /* CSS Custom Properties Definitions */
 /* FONT IMPORTS */
 /* @import url('https://fonts.googleapis.com/css2?family=Archivo&display=swap'); */
-/* @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@100..900&display=swap'); */
-@import url('https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@104.8,367;125,437;125,510&display=swap');
+/* @import url("https://fonts.googleapis.com/css2?family=Archivo:wght@100..900&display=swap"); */
+/* @import url("https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@104.8,367;125,437;125,510&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100,360;107.5,700&display=swap");
 
 :root {
+  /* SYSTEM SPACING */
   --maxWidth-none: "none";
   --maxWidth-xs: 20rem;
   --maxWidth-sm: 24rem;
@@ -31,15 +33,18 @@
   --spacing-20: 5rem;
   --spacing-24: 6rem;
   --spacing-32: 8rem;
+
+  /* SYSTEM FONT CONFIG */
   --fontFamily-sans: Archivo, system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    --fontFamily-serif: Archivo, "Georgia", Cambria, "Times New Roman",
+  --fontFamily-serif: Archivo, "Georgia", Cambria, "Times New Roman",
     /* --fontFamily-sans: Montserrat, system-ui, -apple-system, BlinkMacSystemFont,
       "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
       "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; */
-  /* --fontFamily-serif: "Merriweather", "Georgia", Cambria, "Times New Roman", */
-    Times, serif;
+      /* --fontFamily-serif: "Merriweather", "Georgia", Cambria, "Times New Roman", */
+      Times,
+    serif;
   --font-body: var(--fontFamily-sans);
   --font-heading: var(--fontFamily-serif);
   --fontWeight-normal: 400;
@@ -53,6 +58,8 @@
   --lineHeight-tight: 1.1;
   --lineHeight-normal: 1.5;
   --lineHeight-relaxed: 1.625;
+
+  /* SYSTEM FONT SIZING */
   /* 1.200 Minor Third Type Scale */
   --fontSize-0: 0.833rem;
   --fontSize-1: 1rem;
@@ -62,8 +69,11 @@
   --fontSize-5: 2.074rem;
   --fontSize-6: 2.488rem;
   --fontSize-7: 2.986rem;
-  --color-primary: #005b99;
-  --color-text: #2e353f;
+
+  /* SYSTEM COLORS */
+  --color-primary: #859608;
+  --color-primary-light: #e5f950;
+  --color-text: #1c1c1c;
   --color-text-light: #4f5969;
   --color-heading: #1a202c;
   --color-heading-black: black;
@@ -84,7 +94,6 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
-
 }
 
 body {
@@ -131,7 +140,7 @@ h1 {
   font-weight: var(--fontWeight-black);
   font-size: var(--fontSize-6);
   color: var(--color-heading-black);
-  font-variation-settings: 'wdth' 120;
+  font-variation-settings: "wdth" 120;
 }
 
 h2 {
