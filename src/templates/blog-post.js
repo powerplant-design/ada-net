@@ -21,6 +21,8 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
     alt: post.featuredImage?.node?.alt || ``,
   }
 
+  const { nodes: tags } = post.tags
+
   return (
     <Layout>
       <Seo title={post.title} description={post.excerpt} />
@@ -34,7 +36,16 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
           <h1 itemProp="headline">{parse(post.title)}</h1>
 
           <p>{post.date}</p>
-
+          {tags &&
+            tags.map((tag, index) => {
+              return (
+                <span>
+                  {tag.name} {index !== tags.length - 1 && "/ "}
+                </span>
+              )
+            })}
+          <br />
+          <br />
           {/* if we have a featured image for this post let's display it */}
           {featuredImage?.fluid && (
             <Image
@@ -102,6 +113,12 @@ export const pageQuery = graphql`
       excerpt
       content
       title
+      tags {
+        nodes {
+          id
+          name
+        }
+      }
       date(formatString: "MMMM DD, YYYY")
 
       featuredImage {

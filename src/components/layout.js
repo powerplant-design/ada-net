@@ -30,6 +30,21 @@ const Layout = ({ isHomePage, children }) => {
             {title}
           </Link>
         )}
+        <nav className="global-nav">
+          <a>Artbase</a>
+          <a>Event</a>
+          <a>Library</a>
+          <a>About</a>
+          <a
+            href="https://list.waikato.ac.nz/postorius/lists/ada_list.list.waikato.ac.nz/"
+            target="_blank"
+            noopener
+          >
+            Subscribe
+          </a>
+          <a>Contribute</a>
+          <a>Symposium 2021 - CFP</a>
+        </nav>
       </header>
 
       <main>{children}</main>

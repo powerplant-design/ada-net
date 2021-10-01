@@ -13,9 +13,9 @@
   --maxWidth-md: 28rem;
   --maxWidth-lg: 32rem;
   --maxWidth-xl: 36rem;
-  --maxWidth-2xl: 42rem;
-  --maxWidth-3xl: 48rem;
-  --maxWidth-4xl: 56rem;
+  --maxWidth-2xl: 74rem;
+  --maxWidth-3xl: 78rem;
+  --maxWidth-4xl: 82rem;
   --maxWidth-full: "100%";
   --maxWidth-wrapper: var(--maxWidth-2xl);
   --spacing-px: "1px";
@@ -273,6 +273,11 @@ a:focus {
 
 .global-header {
   margin-bottom: var(--spacing-12);
+}
+
+.global-nav a {
+  display: inline-block;
+  margin-right: 8px;
 }
 
 .main-heading {
