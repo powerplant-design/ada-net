@@ -38,7 +38,7 @@ const Navigation = () => {
       >
         Subscribe
       </a>
-      <a href="artbase">Contribute</a>
+      <a href="artbase/contribute/">Contribute</a>
       <a href="artbase">Symposium 2021 - CFP</a>
     </nav>
   )
