@@ -1,6 +1,7 @@
 import React from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import parse from "html-react-parser"
+import Navigation from "./navigation"
 
 const Layout = ({ isHomePage, children }) => {
   const {
@@ -30,21 +31,7 @@ const Layout = ({ isHomePage, children }) => {
             {title}
           </Link>
         )}
-        <nav className="global-nav">
-          <a>Artbase</a>
-          <a>Event</a>
-          <a>Library</a>
-          <a>About</a>
-          <a
-            href="https://list.waikato.ac.nz/postorius/lists/ada_list.list.waikato.ac.nz/"
-            target="_blank"
-            noopener
-          >
-            Subscribe
-          </a>
-          <a>Contribute</a>
-          <a>Symposium 2021 - CFP</a>
-        </nav>
+        <Navigation />
       </header>
 
       <main>{children}</main>
