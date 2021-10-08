@@ -1,8 +1,8 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 import parse from "html-react-parser"
+import Image from "gatsby-image"
 
-import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
@@ -16,7 +16,6 @@ const BlogIndex = ({
     return (
       <Layout isHomePage>
         <Seo title="All posts" />
-        <Bio />
         <p>
           No blog posts found. Add posts to your WordPress site and they'll
           appear here!
@@ -29,12 +28,15 @@ const BlogIndex = ({
     <Layout isHomePage>
       <Seo title="All posts" />
 
-      <Bio />
-
       <ol style={{ listStyle: `none` }}>
         {posts.map(post => {
           const title = post.title
 
+          const featuredImage = {
+            fluid: post.featuredImage?.node?.localFile?.childImageSharp?.fluid,
+            alt: post.featuredImage?.node?.alt || ``,
+          }
+          console.log(featuredImage)
           return (
             <li key={post.uri}>
               <article
@@ -50,6 +52,13 @@ const BlogIndex = ({
                   </h2>
                   <small>{post.date}</small>
                 </header>
+                {featuredImage?.fluid && (
+                  <Image
+                    fluid={featuredImage.fluid}
+                    alt={featuredImage.alt}
+                    style={{ marginBottom: 50, width: "250px" }}
+                  />
+                )}
                 <section itemProp="description">{parse(post.excerpt)}</section>
               </article>
             </li>
@@ -78,11 +87,22 @@ export const pageQuery = graphql`
       skip: $offset
     ) {
       nodes {
-        excerpt
         uri
         date(formatString: "MMMM DD, YYYY")
         title
         excerpt
+        featuredImage {
+          node {
+            altText
+            localFile {
+              childImageSharp {
+                fluid(maxWidth: 800, quality: 100) {
+                  ...GatsbyImageSharpFluid_tracedSVG
+                }
+              }
+            }
+          }
+        }
       }
     }
   }
