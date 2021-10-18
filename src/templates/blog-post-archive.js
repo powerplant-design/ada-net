@@ -53,11 +53,13 @@ const BlogIndex = ({
                   <small>{post.date}</small>
                 </header>
                 {featuredImage?.fluid && (
-                  <Image
-                    fluid={featuredImage.fluid}
-                    alt={featuredImage.alt}
-                    style={{ marginBottom: 50, width: "250px" }}
-                  />
+                  <Link to={post.uri} itemProp="url">
+                    <Image
+                      fluid={featuredImage.fluid}
+                      alt={featuredImage.alt}
+                      style={{ marginBottom: 50, width: "100%" }}
+                    />
+                  </Link>
                 )}
                 <section itemProp="description">{parse(post.excerpt)}</section>
               </article>

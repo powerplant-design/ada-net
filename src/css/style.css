@@ -17,7 +17,8 @@
   --maxWidth-3xl: 78rem;
   --maxWidth-4xl: 82rem;
   --maxWidth-full: "100%";
-  --maxWidth-wrapper: var(--maxWidth-2xl);
+  /* --maxWidth-wrapper: var(--maxWidth-2xl); */
+  --maxWidth-wrapper: 1080px;
   --spacing-px: "1px";
   --spacing-0: 0;
   --spacing-1: 0.25rem;
@@ -72,6 +73,7 @@
 
   /* SYSTEM COLORS */
   --color-primary: #859608;
+  --color-primary-dark: #5a6601;
   --color-primary-light: #e5f950;
   --color-text: #1c1c1c;
   --color-text-light: #4f5969;
@@ -145,6 +147,7 @@ h1 {
 
 h2 {
   font-size: var(--fontSize-5);
+  font-weight: var(--fontWeight-bold);
 }
 
 h3 {
@@ -185,6 +188,7 @@ p {
   --x-height-multiplier: 0.35;
   margin: var(--spacing-0) var(--spacing-0) var(--spacing-8) var(--spacing-0);
   padding: var(--spacing-0);
+  /* max-width: 80ch; */
 }
 
 ul,
@@ -252,10 +256,13 @@ table thead tr th {
 a {
   color: var(--color-primary);
   word-break: break-word;
+  text-decoration: none;
+  transition: color 300ms;
 }
 
-a:hover,
-a:focus {
+a:hover {
+  /* a:focus { */
+  color: var(--color-primary-dark);
   text-decoration: none;
 }
 
@@ -272,7 +279,7 @@ a:focus {
 }
 
 .global-header {
-  margin-bottom: var(--spacing-12);
+  /* margin-bottom: var(--spacing-12); */
 }
 
 .global-nav a {
@@ -310,6 +317,8 @@ a:focus {
   font-family: var(--font-heading);
   text-decoration: none;
   font-size: var(--fontSize-2);
+  text-align: center;
+  margin: 0 auto;
 }
 
 .bio {
@@ -327,6 +336,11 @@ a:focus {
   max-width: 80px;
   height: auto;
   border-radius: 100%;
+}
+
+.blog-post {
+  max-width: 760px;
+  margin: 0 auto;
 }
 
 .blog-post header h1 {

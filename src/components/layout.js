@@ -20,27 +20,46 @@ const Layout = ({ isHomePage, children }) => {
   `)
 
   return (
-    <div className="global-wrapper" data-is-root-path={isHomePage}>
-      <header className="global-header">
+    <main>
+      <header
+        className="global-header"
+        style={{
+          backgroundColor: "black",
+          color: "white",
+          //   maxWidth: 1080,
+          //   margin: "0 auto",
+        }}
+      >
         {isHomePage ? (
-          <h1 className="main-heading">
+          <h1
+            className="main-heading"
+            style={{
+              backgroundColor: "black",
+              color: "white",
+              maxWidth: 1080,
+              margin: "0 auto",
+              padding: "2rem 1rem 0",
+            }}
+          >
             <Link to="/">{parse(title)}</Link>
           </h1>
         ) : (
           <Link className="header-link-home" to="/">
-            {title}
+            {/* {title} */}
           </Link>
         )}
-        <Navigation />
       </header>
+      <Navigation />
 
-      <main>{children}</main>
+      <div className="global-wrapper" data-is-root-path={isHomePage}>
+        <main>{children}</main>
 
-      <footer>
-        © {new Date().getFullYear()} ADA – Aotearoa Digital Arts Network .
-        Creative Commons licensed unless otherwise stated.
-      </footer>
-    </div>
+        <footer>
+          © {new Date().getFullYear()} ADA – Aotearoa Digital Arts Network .
+          Creative Commons licensed unless otherwise stated.
+        </footer>
+      </div>
+    </main>
   )
 }
 
