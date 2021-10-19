@@ -21,6 +21,7 @@ const Layout = ({ isHomePage, children }) => {
 
   return (
     <main>
+      {/* @LUCAS!! Can we cut the header out into a seperate component perhaps? */}
       <header
         className="global-header"
         style={{
@@ -38,10 +39,13 @@ const Layout = ({ isHomePage, children }) => {
               color: "white",
               maxWidth: 1080,
               margin: "0 auto",
-              padding: "2rem 1rem 0",
+              padding: "2rem 1rem 1rem",
             }}
           >
-            <Link to="/">{parse(title)}</Link>
+            {/* <Link to="/">{parse(title)}</Link> */}
+            <h1 style={{ color: "white", textAlign: "center" }}>
+              {parse(title)}
+            </h1>
           </h1>
         ) : (
           <Link className="header-link-home" to="/">
@@ -49,6 +53,7 @@ const Layout = ({ isHomePage, children }) => {
           </Link>
         )}
       </header>
+
       <Navigation />
 
       <div className="global-wrapper" data-is-root-path={isHomePage}>

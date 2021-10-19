@@ -26,9 +26,7 @@ module.exports = {
       resolve: `gatsby-source-wordpress`,
       options: {
         // the only required plugin option for WordPress is the GraphQL url.
-        url:
-          process.env.WPGRAPHQL_URL ||
-          `http://www.ada.net.nz/graphql`,
+        url: process.env.WPGRAPHQL_URL || `http://www.ada.net.nz/graphql`,
       },
     },
 
@@ -76,5 +74,13 @@ module.exports = {
      * To learn more, visit: https://gatsby.dev/offline
      */
     // `gatsby-plugin-offline`,
+
+    // Styled Components
+    {
+      resolve: `gatsby-plugin-styled-components`,
+      options: {
+        // Add any options here
+      },
+    },
   ],
 }
