@@ -27,54 +27,83 @@ const BlogIndex = ({
   return (
     <Layout isHomePage>
       <Seo title="All posts" />
+      <>
+        <ol style={{ listStyle: `none`, padding: "0 1rem" }}>
+          {posts.map(post => {
+            const title = post.title
+            const { nodes: tags } = post.tags
 
-      <ol style={{ listStyle: `none` }}>
-        {posts.map(post => {
-          const title = post.title
+            const featuredImage = {
+              fluid:
+                post.featuredImage?.node?.localFile?.childImageSharp?.fluid,
+              alt: post.featuredImage?.node?.alt || ``,
+            }
 
-          const featuredImage = {
-            fluid: post.featuredImage?.node?.localFile?.childImageSharp?.fluid,
-            alt: post.featuredImage?.node?.alt || ``,
-          }
-          console.log(featuredImage)
-          return (
-            <li key={post.uri}>
-              <article
-                className="post-list-item"
-                itemScope
-                itemType="http://schema.org/Article"
-              >
-                <header>
-                  <h2>
+            console.log(featuredImage)
+
+            return (
+              <li key={post.uri}>
+                <article
+                  className="post-list-item"
+                  itemScope
+                  itemType="http://schema.org/Article"
+                >
+                  <header>
+                    <h2>
+                      <Link to={post.uri} itemProp="url">
+                        <span itemProp="headline">{parse(title)}</span>
+                      </Link>
+                    </h2>
+
+                    <small>{post.date}</small>
+
+                    <div>
+                      {tags &&
+                        tags.map((tag, index) => {
+                          return (
+                            <span>
+                              {tag.name} {index !== tags.length - 1 && "/ "}
+                            </span>
+                          )
+                        })}
+                    </div>
+                  </header>
+
+                  {featuredImage?.fluid && (
                     <Link to={post.uri} itemProp="url">
-                      <span itemProp="headline">{parse(title)}</span>
+                      <Image
+                        fluid={featuredImage.fluid}
+                        alt={featuredImage.alt}
+                        style={{ marginBottom: 50, width: "100%" }}
+                      />
                     </Link>
-                  </h2>
-                  <small>{post.date}</small>
-                </header>
-                {featuredImage?.fluid && (
-                  <Link to={post.uri} itemProp="url">
-                    <Image
-                      fluid={featuredImage.fluid}
-                      alt={featuredImage.alt}
-                      style={{ marginBottom: 50, width: "100%" }}
-                    />
-                  </Link>
-                )}
-                <section itemProp="description">{parse(post.excerpt)}</section>
-              </article>
-            </li>
-          )
-        })}
-      </ol>
+                  )}
 
-      {previousPagePath && (
-        <>
-          <Link to={previousPagePath}>Previous page</Link>
-          <br />
-        </>
-      )}
-      {nextPagePath && <Link to={nextPagePath}>Next page</Link>}
+                  <section itemProp="description">
+                    {parse(post.excerpt)}
+                  </section>
+                </article>
+              </li>
+            )
+          })}
+        </ol>
+
+        <div
+          style={{
+            padding: `1rem`,
+            display: `flex`,
+            justifyContent: `space-between`,
+          }}
+        >
+          {previousPagePath && (
+            <div>
+              <Link to={previousPagePath}>⇐ Previous</Link>
+              <br />
+            </div>
+          )}
+          {nextPagePath && <Link to={nextPagePath}>Next ⇒</Link>}
+        </div>
+      </>
     </Layout>
   )
 }
@@ -92,13 +121,19 @@ export const pageQuery = graphql`
         uri
         date(formatString: "MMMM DD, YYYY")
         title
+        tags {
+          nodes {
+            id
+            name
+          }
+        }
         excerpt
         featuredImage {
           node {
             altText
             localFile {
               childImageSharp {
-                fluid(maxWidth: 800, quality: 100) {
+                fluid(maxWidth: 2000, quality: 60) {
                   ...GatsbyImageSharpFluid_tracedSVG
                 }
               }

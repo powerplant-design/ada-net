@@ -33,7 +33,7 @@ const Navigation = () => {
   return (
     <>
       <NavButton open={open} onClick={() => setOpen(!open)}>
-        ⇧
+        MENU
       </NavButton>
 
       <Nav className="nav-global" open={open}>
@@ -126,19 +126,19 @@ const Nav = styled.nav`
   position: fixed;
   background: black;
   padding: 1rem;
-  top: 20vh;
+  top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   z-index: 666;
   transition: 400ms ease-in-out;
-  transform: ${({ open }) => (open ? "translateY(0)" : "translateY(100%)")};
+  transform: ${({ open }) => (open ? "translateX(0)" : "translateX(100%)")};
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 
-  @media screen and (min-width: 940px) {
-    transform: translateY(0);
+  @media screen and (min-width: 880px) {
+    transform: translateX(0);
     padding: 0;
     color: white;
     margin: 0 auto;
@@ -152,7 +152,7 @@ const NavWrapper = styled.div`
   display: flex;
   flex-direction: column;
 
-  @media screen and (min-width: 940px) {
+  @media screen and (min-width: 880px) {
     flex-direction: row;
     justify-content: space-evenly;
   }
@@ -175,7 +175,7 @@ const NavLink = styled(Link)`
     align-items: center;
   }
 
-  @media screen and (min-width: 940px) {
+  @media screen and (min-width: 880px) {
     font-size: 0.8em;
     border-right: 1px solid var(--color-primary);
   }
@@ -197,8 +197,8 @@ const NavLinkExternal = styled.a`
     align-items: center;
   }
 
-  @media screen and (min-width: 940px) {
-    font-size: 0.8em;
+  @media screen and (min-width: 880px) {
+    font-size: 0.7em;
   }
 `
 

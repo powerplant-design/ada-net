@@ -3,6 +3,8 @@ import { Link, useStaticQuery, graphql } from "gatsby"
 import parse from "html-react-parser"
 import Navigation from "./navigation"
 
+import Footer from "./footer"
+
 const Layout = ({ isHomePage, children }) => {
   const {
     wp: {
@@ -20,7 +22,7 @@ const Layout = ({ isHomePage, children }) => {
   `)
 
   return (
-    <main>
+    <main style={{ backgroundColor: "white" }}>
       {/* @LUCAS!! Can we cut the header out into a seperate component perhaps? */}
       <header
         className="global-header"
@@ -59,10 +61,7 @@ const Layout = ({ isHomePage, children }) => {
       <div className="global-wrapper" data-is-root-path={isHomePage}>
         <main>{children}</main>
 
-        <footer>
-          © {new Date().getFullYear()} ADA – Aotearoa Digital Arts Network .
-          Creative Commons licensed unless otherwise stated.
-        </footer>
+        <Footer />
       </div>
     </main>
   )
