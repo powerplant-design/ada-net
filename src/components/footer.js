@@ -14,7 +14,7 @@ const Footer = () => {
         <a
           href="https://creativecommons.org/licenses/by-nc-nd/2.5/"
           target="_blank"
-          rel="norefferer noopener"
+          rel="noreferrer noopener"
         >
           Creative Commons licensed unless otherwise stated
         </a>
