@@ -1,33 +1,8 @@
 import React, { useState } from "react"
 import { Link } from "gatsby"
-// import { Link, useStaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
 
 const Navigation = () => {
-  // const { menu } = useStaticQuery(
-  //   graphql`
-  //     query MyQuery {
-  //       wpMenu {
-  //         id
-  //         menuItems {
-  //           nodes {
-  //             parentId
-  //             label
-  //             path
-  //             childItems {
-  //               nodes {
-  //                 path
-  //                 label
-  //               }
-  //             }
-  //           }
-  //         }
-  //       }
-  //     }
-  //   `
-  // )
-  // console.log(menu)
-
   const [open, setOpen] = useState(false)
 
   return (
