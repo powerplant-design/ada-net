@@ -49,11 +49,14 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
             </a>
             {tags &&
               tags.map((tag, index) => {
+                console.log(tag.link)
                 return (
-                  <span className="tag">
+                  //   <span className="tag">
+                  <Link to={tag.link} className="tag" key={index}>
                     {/* {tag.name} {index !== tags.length - 1 && " "} */}
                     {tag.name} {index !== tags.length - 1}
-                  </span>
+                  </Link>
+                  //   </span>
                 )
               })}
           </div>
@@ -179,6 +182,7 @@ export const pageQuery = graphql`
         nodes {
           id
           name
+          link
         }
       }
       date(formatString: "MMMM DD, YYYY")

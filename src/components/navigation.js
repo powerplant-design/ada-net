@@ -47,7 +47,7 @@ const Navigation = () => {
           </NavLink>
 
           <NavLink
-            to="/events/symposia/symposium2014-symposia/civics-and-social/"
+            to="/events/"
             activeClassName="nav-link--active"
             onClick={() => setOpen(false)}
           >
@@ -55,7 +55,7 @@ const Navigation = () => {
           </NavLink>
 
           <NavLink
-            to="/library/a-transitional-imaginary-space-network-and-memory-in-christchurch/"
+            to="/library/"
             activeClassName="nav-link--active"
             onClick={() => setOpen(false)}
           >

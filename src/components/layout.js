@@ -29,6 +29,9 @@ const Layout = ({ isHomePage, children }) => {
         style={{
           backgroundColor: "black",
           color: "white",
+          //   display: "flex",
+          //   justifyContent: "center",
+          //   padding: "0.8rem",
           //   maxWidth: 1080,
           //   margin: "0 auto",
         }}
@@ -50,7 +53,11 @@ const Layout = ({ isHomePage, children }) => {
             </h1>
           </h1>
         ) : (
-          <Link className="header-link-home" to="/">
+          <Link
+            className="header-link-home"
+            to="/"
+            style={{ textAlign: "center" }}
+          >
             {/* {title} */}
           </Link>
         )}

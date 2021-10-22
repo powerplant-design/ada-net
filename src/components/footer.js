@@ -1,13 +1,14 @@
 import React from "react"
 import styled from "styled-components"
+import { Link } from "gatsby"
 
 const Footer = () => {
   return (
     <FooterStyled style={{}}>
       <p>
-        <a href="#">
+        <Link href="/">
           © {new Date().getFullYear()} ADA–Aotearoa Digital Arts Network
-        </a>
+        </Link>
       </p>
       <p>
         <a
