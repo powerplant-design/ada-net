@@ -109,7 +109,7 @@ const Article = styled.article`
 
   header {
     @media screen and (min-width: 940px) {
-      max-height: calc(100vh - 40px);
+      max-height: calc(100vh - 180px);
       overflow-y: hidden;
       position: relative;
     }
