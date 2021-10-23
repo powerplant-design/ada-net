@@ -23,7 +23,7 @@ const Layout = ({ isHomePage, children }) => {
 
   return (
     <main style={{ backgroundColor: "white" }}>
-      <Header title={title} />
+      <Header title={title} isHomePage={isHomePage} />
 
       <Navigation />
 

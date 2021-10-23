@@ -44,9 +44,9 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
           )}
 
           <div className="hero-content">
-            <a href="#content">
+            <Link href="#content">
               <h1 itemProp="headline">{parse(post.title)}</h1>
-            </a>
+            </Link>
             {tags &&
               tags.map((tag, index) => {
                 console.log(tag.link)
@@ -107,9 +107,13 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
 const Article = styled.article`
   position: relative;
 
+  strong {
+    font-variation-settings: "wdth" 120;
+  }
+
   header {
     @media screen and (min-width: 940px) {
-      max-height: calc(100vh - 180px);
+      max-height: calc(100vh - 38px);
       overflow-y: hidden;
       position: relative;
     }
@@ -121,6 +125,11 @@ const Article = styled.article`
 
   h1 {
     color: var(--color-primary);
+    transition: color 300ms;
+
+    &:hover {
+      color: var(--color-primary-light);
+    }
   }
 
   .hero-content {
@@ -139,6 +148,13 @@ const Article = styled.article`
       color: var(--color-primary-light);
       background-color: var(--color-primary-dark);
       border-radius: 2rem;
+
+      transition: color 300ms, background 300ms;
+
+      &:hover {
+        color: var(--color-primary-dark);
+        background-color: var(--color-primary-light);
+      }
     }
 
     @media screen and (min-width: 940px) {

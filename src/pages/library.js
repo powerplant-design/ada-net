@@ -44,10 +44,10 @@ const LibraryCollection = styled.section`
 
   h2 {
     font-size: 1.2rem;
-    margin: 0;
+    margin: 0 0 0.4rem 0;
 
     @media screen and (min-width: 880px) {
-      font-size: 2.8rem;
+      font-size: 2.4rem;
     }
   }
 
@@ -68,7 +68,7 @@ const LibraryCollection = styled.section`
   }
 
   .info {
-    padding: 0.8rem 2rem 0.8rem 0.8rem;
+    padding: 1.2rem 2rem 0.8rem 0.8rem;
     /* background: black; */
   }
 `

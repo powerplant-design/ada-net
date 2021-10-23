@@ -5,11 +5,11 @@ import Layout from "../components/layout"
 // import { GatsbyImage, getImage } from "gatsby-image"
 import Image from "gatsby-image"
 
-const Library = ({ data }) => {
+const Events = ({ data }) => {
   console.log(data)
   return (
     <Layout>
-      <LibraryCollection>
+      <EventsCollection>
         {data.allWpPost.nodes.map((post, index) => {
           const featuredImage = {
             fluid: post.featuredImage?.node?.localFile?.childImageSharp?.fluid,
@@ -23,33 +23,51 @@ const Library = ({ data }) => {
                 style={{ marginBottom: 50, width: "100%" }}
               />
               <h2>{post.title}</h2>
+              <p>{post.date}</p>
             </Link>
           )
         })}
-      </LibraryCollection>
+      </EventsCollection>
     </Layout>
   )
 }
 
-const LibraryCollection = styled.section`
-  /* background: blue; */
+const EventsCollection = styled.section`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  /* gap: 2rem; */
+  grid-template-columns: repeat(2, 1fr);
 
-  a {
-    border: 1px solid black;
-    padding: 1rem;
-    transition: background 300ms;
-    &:hover {
-      h2 {
-        color: white;
-      }
-      background: var(--color-primary-dark);
+  @media screen and (min-width: 880px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  h2 {
+    font-size: 1.2rem;
+    margin: 0 0 0.4rem 0;
+
+    @media screen and (min-width: 880px) {
+      font-size: 2.4rem;
     }
   }
 
-  Image {
+  a {
+    border: 1px solid var(--color-primary-dark);
+    transition: background 3000ms ease-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &:hover {
+      background: var(--color-primary-light);
+    }
+  }
+
+  .gatsby-image-wrapper {
+    margin-bottom: 0 !important;
+  }
+
+  .info {
+    padding: 1.2rem 2rem 0.8rem 0.8rem;
+    /* background: black; */
   }
 `
 
@@ -65,6 +83,7 @@ export const query = graphql`
         title
         excerpt
         uri
+        date(formatString: "MMMM DD, YYYY")
         tags {
           nodes {
             name
@@ -87,4 +106,4 @@ export const query = graphql`
   }
 `
 
-export default Library
+export default Events
