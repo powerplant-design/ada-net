@@ -27,7 +27,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
     <Layout>
       <Seo title={post.title} description={post.excerpt} />
 
-      <Article
+      <Post
         className="blog-post"
         itemScope
         itemType="http://schema.org/Article"
@@ -38,7 +38,6 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
             <Image
               fluid={featuredImage.fluid}
               alt={featuredImage.alt}
-              //   style={{ marginBottom: 50 }}
               className="hero-image"
             />
           )}
@@ -51,12 +50,9 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
               tags.map((tag, index) => {
                 console.log(tag.link)
                 return (
-                  //   <span className="tag">
                   <Link to={tag.link} className="tag" key={index}>
-                    {/* {tag.name} {index !== tags.length - 1 && " "} */}
                     {tag.name} {index !== tags.length - 1}
                   </Link>
-                  //   </span>
                 )
               })}
           </div>
@@ -69,20 +65,10 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
             {parse(post.content)}
           </section>
         )}
+      </Post>
 
-        {/* <hr /> */}
-      </Article>
-
-      <nav className="blog-post-nav">
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: `1rem`,
-          }}
-        >
+      <PostNav>
+        <ul>
           <li>
             {previous && (
               <Link to={previous.uri} rel="prev">
@@ -99,12 +85,12 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
             )}
           </li>
         </ul>
-      </nav>
+      </PostNav>
     </Layout>
   )
 }
 
-const Article = styled.article`
+const Post = styled.article`
   position: relative;
 
   strong {
@@ -175,6 +161,40 @@ const Article = styled.article`
 
     .gatsby-image-wrapper {
       width: 100% !important;
+    }
+  }
+`
+
+const PostNav = styled.nav`
+  background: black;
+
+  ul {
+    margin: 0;
+    display: flex;
+    /* flex-wrap: wrap; */
+    justify-content: space-between;
+    list-style: none;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  li {
+    margin: 0;
+  }
+
+  a {
+    height: 100%;
+    line-height: 1;
+    display: block;
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    border-radius: 1rem;
+    padding: 1rem;
+    transition: color 300ms, border 300ms;
+
+    &:hover {
+      color: var(--color-primary-light);
+      border: 1px solid var(--color-primary-light);
     }
   }
 `

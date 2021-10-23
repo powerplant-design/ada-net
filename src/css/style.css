@@ -154,6 +154,7 @@ h1 {
 h2 {
   font-size: var(--fontSize-4);
   font-weight: var(--fontWeight-bold);
+  font-variation-settings: "wdth" 120;
 }
 
 h3 {
