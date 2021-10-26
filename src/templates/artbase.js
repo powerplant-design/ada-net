@@ -44,48 +44,47 @@ const BlogIndex = ({
 
             return (
               <li key={post.uri}>
-                <Link
+                {/* <Link
                   to={post.uri}
                   itemProp="url"
                   className="post-list-item"
                   itemScope
                   itemType="http://schema.org/Article"
-                >
-                  {featuredImage?.fluid && (
-                    // <Link to={post.uri} itemProp="url">
+                > */}
+                {featuredImage?.fluid && (
+                  <Link to={post.uri} itemProp="url">
                     <Image
                       fluid={featuredImage.fluid}
                       alt={featuredImage.alt}
                       style={{ width: "100%" }}
                     />
-                    // </Link>
-                  )}
+                  </Link>
+                )}
 
-                  <div className="artbase-info">
-                    <small>{post.date}</small>
-
-                    <h2>
-                      {/* <Link to={post.uri} itemProp="url"> */}
+                <div className="artbase-info">
+                  <h2>
+                    <Link to={post.uri} itemProp="url">
                       <span itemProp="headline">{parse(title)}</span>
-                      {/* </Link> */}
-                    </h2>
+                    </Link>
+                  </h2>
 
-                    <div className="artbase-tags">
-                      {tags &&
-                        tags.map((tag, index) => {
-                          return (
-                            <span>
-                              {tag.name} {index !== tags.length - 1 && "/ "}
-                            </span>
-                          )
-                        })}
-                    </div>
-
-                    <div itemProp="description" className="artbase-excerpt">
-                      {parse(post.excerpt)}
-                    </div>
+                  <div className="artbase-tags">
+                    {tags &&
+                      tags.map((tag, index) => {
+                        return (
+                          <span className="artbase-tag">
+                            {tag.name} {index !== tags.length - 1 && ""}
+                          </span>
+                        )
+                      })}
                   </div>
-                </Link>
+
+                  <div itemProp="description" className="artbase-excerpt">
+                    {parse(post.excerpt)}
+                  </div>
+                  <small className="artbase-date">{post.date}</small>
+                </div>
+                {/* </Link> */}
               </li>
             )
           })}
@@ -124,21 +123,33 @@ const Artbase = styled.ol`
     }
   }
 
-  li:first-child,
+  /* li:first-child,
   li:last-child {
     grid-column: 1 / -1;
-  }
+  } */
 
-  a {
+  /* a {
     color: black;
+    display: block;
+    margin-top: 0;
     &:hover {
       color: black;
     }
+  } */
+
+  h2 {
+    margin: 0 0 0.8rem;
   }
 
   .artbase {
+    &-date {
+      display: inline-block;
+      margin-top: 1rem;
+    }
+
     &-info {
-      padding: 1rem;
+      padding: 1.4rem 1.4rem 2.6rem;
+      position: relative;
       /* display: flex; */
       /* flex-wrap: wrap; */
       /* justify-content: space-between; */
@@ -150,6 +161,19 @@ const Artbase = styled.ol`
 
     &-nav {
       background: black;
+    }
+
+    &-tags {
+      margin-bottom: 0.6rem;
+    }
+
+    &-tag {
+      display: inline-block;
+      text-transform: uppercase;
+      font-size: 0.6rem;
+      border: 1px solid black;
+      padding: 0.4rem 0.8rem;
+      margin: 0 0.2rem 0.2rem 0;
     }
   }
 `

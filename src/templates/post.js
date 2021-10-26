@@ -123,6 +123,9 @@ const Post = styled.article`
     background: black;
     padding: 1.6rem 0.8rem 0.8rem;
     margin-top: -2px;
+    @media screen and (min-width: 940px) {
+      max-width: 70vw;
+    }
 
     .tag {
       display: inline-block;
@@ -133,7 +136,7 @@ const Post = styled.article`
       margin: 0 0.4rem 0.4rem 0;
       color: var(--color-primary-light);
       background-color: var(--color-primary-dark);
-      border-radius: 2rem;
+      /* border-radius: 2rem; */
 
       transition: color 300ms, background 300ms;
 

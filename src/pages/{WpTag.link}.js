@@ -5,11 +5,12 @@ import TagsList from "../components/tagsList"
 
 const WpTag = ({ data }) => {
   console.log(data)
+
   const { slug, name, link, id } = data.wpTag
   return (
     <Layout>
       <section>
-        <h1>tag / {name}</h1>
+        <h1>Show all posts with the tag: {name}</h1>
         {/* <TagsList name={name} /> */}
       </section>
     </Layout>
