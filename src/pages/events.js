@@ -2,13 +2,14 @@ import React from "react"
 import { graphql, Link } from "gatsby"
 import styled from "styled-components"
 import Layout from "../components/layout"
-// import { GatsbyImage, getImage } from "gatsby-image"
+import Seo from "../components/seo"
 import Image from "gatsby-image"
 
 const Events = ({ data }) => {
   console.log(data)
   return (
     <Layout>
+      <Seo title="Events" />
       <EventsCollection>
         {data.allWpPost.nodes.map((post, index) => {
           const featuredImage = {
