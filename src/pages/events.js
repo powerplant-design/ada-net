@@ -6,7 +6,6 @@ import Seo from "../components/seo"
 import Image from "gatsby-image"
 
 const Events = ({ data }) => {
-  console.log(data)
   return (
     <Layout>
       <Seo title="Events" />

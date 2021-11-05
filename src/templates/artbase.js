@@ -16,7 +16,7 @@ const BlogIndex = ({
   if (!posts.length) {
     return (
       <Layout isHomePage>
-        <Seo title="All posts" />
+        <Seo title="Artbase" />
         <p>
           No blog posts found. Add posts to your WordPress site and they'll
           appear here!
@@ -27,7 +27,7 @@ const BlogIndex = ({
 
   return (
     <Layout isHomePage>
-      <Seo title="All posts" />
+      <Seo title="Artbase" />
       <>
         <Artbase>
           {posts.map(post => {

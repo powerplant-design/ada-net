@@ -5,7 +5,7 @@ import styled from "styled-components"
 
 const Tag = ({ data }) => {
   const tags = data.allWpTag.nodes
-  console.log(tags)
+
   return (
     <Layout>
       <TagsList>
