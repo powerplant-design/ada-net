@@ -22,8 +22,10 @@ const Events = ({ data }) => {
                 alt={featuredImage.alt}
                 style={{ marginBottom: 50, width: "100%" }}
               />
-              <h2>{post.title}</h2>
-              <p>{post.date}</p>
+              <div className="events-list__post-info">
+                <h2>{post.title}</h2>
+                <p>{post.date}</p>
+              </div>
             </Link>
           )
         })}
@@ -65,7 +67,7 @@ const EventsCollection = styled.section`
     margin-bottom: 0 !important;
   }
 
-  .info {
+  .events-list__post-info {
     padding: 1.2rem 2rem 0.8rem 0.8rem;
     /* background: black; */
   }

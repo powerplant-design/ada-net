@@ -1,19 +1,47 @@
 import React from "react"
 import { graphql } from "gatsby"
+import styled from "styled-components"
 import Layout from "../components/layout"
 import TagsList from "../components/tagsList"
 
-const WpTag = ({ data }) => {
-  const { slug, name, link, id } = data.wpTag
+const TagPage = ({ data }) => {
+  const { name } = data.wpTag
   return (
     <Layout>
-      <section>
-        <h1>Show all posts with the tag: {name}</h1>
+      <TagPageContainer>
+        <div className="tag-page__title">
+          <h1>
+            Artbase tag == <span>{name}</span>
+          </h1>
+        </div>
         <TagsList name={name} />
-      </section>
+      </TagPageContainer>
     </Layout>
   )
 }
+
+const TagPageContainer = styled.section`
+  /* background: blue; */
+  .tag-page__title {
+    background: black;
+    padding: 1rem;
+  }
+
+  h1 {
+    color: var(--color-primary);
+    font-size: 2rem;
+    margin: 0.6rem 0;
+
+    @media screen and (min-width: 880px) {
+      text-align: left;
+      font-size: 4rem;
+    }
+
+    span {
+      text-transform: capitalize;
+    }
+  }
+`
 
 export const query = graphql`
   query GetSingleTag($link: String = "") {
@@ -26,4 +54,4 @@ export const query = graphql`
   }
 `
 
-export default WpTag
+export default TagPage

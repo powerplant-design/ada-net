@@ -4,10 +4,24 @@ import { Link } from "gatsby"
 
 const Footer = () => {
   return (
-    <FooterStyled style={{}}>
+    <FooterContainer style={{}}>
+      <p>
+        EXPLORE: <Link to="/tag">TAGS</Link>
+      </p>
+      <p>
+        <a
+          href="https://www.instagram.com/_ada_network/"
+          rel="noreffer noopener"
+        >
+          INSTAGRAM
+        </a>
+      </p>
+      <a href="https://www.facebook.com/ADA.net.nz" rel="noreffer noopener">
+        METABOOK
+      </a>
       <p>
         <Link href="/">
-          © {new Date().getFullYear()} ADA–Aotearoa Digital Arts Network
+          © {new Date().getFullYear()} Aotearoa Digital Arts Network
         </Link>
       </p>
       <p>
@@ -19,15 +33,16 @@ const Footer = () => {
           Creative Commons licensed unless otherwise stated
         </a>
       </p>
-    </FooterStyled>
+    </FooterContainer>
   )
 }
 
-const FooterStyled = styled.footer`
+const FooterContainer = styled.footer`
   padding: 1rem;
   background-color: black;
   font-size: 0.8rem;
   color: white;
+
   @media screen and (min-width: 940px) {
     display: flex;
     justify-content: space-between;

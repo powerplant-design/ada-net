@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
 
-const Navigation = () => {
+const Navigation = ({ isHomePage }) => {
   const [open, setOpen] = useState(false)
 
   return (
@@ -14,7 +14,7 @@ const Navigation = () => {
       <Nav className="nav-global" open={open}>
         <NavWrapper className="nav-wrapper">
           <NavLink
-            to="/"
+            to={isHomePage ? "#content-home" : "/"}
             activeClassName="nav-link--active"
             onClick={() => setOpen(false)}
           >

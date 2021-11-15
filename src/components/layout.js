@@ -25,9 +25,13 @@ const Layout = ({ isHomePage, children }) => {
     <main style={{ backgroundColor: "white" }}>
       <Header title={title} isHomePage={isHomePage} />
 
-      <Navigation />
+      <Navigation isHomePage={isHomePage} />
 
-      <div className="global-wrapper" data-is-root-path={isHomePage}>
+      <div
+        id="content-home"
+        className="global-wrapper"
+        data-is-root-path={isHomePage}
+      >
         <main>{children}</main>
 
         <Footer />

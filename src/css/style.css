@@ -228,7 +228,7 @@ li > ul {
 }
 
 blockquote {
-  color: var(--color-text-light);
+  color: var(--color-primary-dark);
   margin-left: calc(-1 * var(--spacing-6));
   margin-right: var(--spacing-8);
   padding: var(--spacing-0) var(--spacing-0) var(--spacing-0) var(--spacing-6);
@@ -256,6 +256,14 @@ table {
 
 table thead tr th {
   border-bottom: 1px solid var(--color-accent);
+}
+
+/* FOOTNOTES */
+.sdfootnoteanc,
+.sdfootnotesym {
+  font-weight: var(--fontWeight-bold);
+  margin-right: 0.4rem;
+  font-variation-settings: "wdth" 120;
 }
 
 /* Link */

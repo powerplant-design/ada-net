@@ -35,7 +35,7 @@ const TagsList = styled.section`
     background: black;
     text-transform: uppercase;
     padding: 0.8rem 1rem;
-    transition: color 300ms, background 300ms;
+    transition: color 700ms, background 700ms;
 
     &:hover {
       color: black;
