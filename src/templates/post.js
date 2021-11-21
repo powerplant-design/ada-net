@@ -48,7 +48,6 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
             </Link>
             {tags &&
               tags.map((tag, index) => {
-                console.log(tag.link)
                 return (
                   <Link to={tag.link} className="tag" key={index}>
                     {tag.name} {index !== tags.length - 1}

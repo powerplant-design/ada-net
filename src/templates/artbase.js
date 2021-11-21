@@ -30,85 +30,73 @@ const BlogIndex = ({
   return (
     <Layout isHomePage>
       <Seo title="Artbase" />
-      <>
-        <TempSymposium>
-          <div className="symposium-container">
-            <img src={ImgSymposium}></img>
-            <Link
-              className="symposium-link"
-              to="http://localhost:8000/symposium2021/call-for-participation-ada-symposium-poneke-wellington-indeterminate-infrastructures-objects-signals-and-architectures/"
-            >
-              <h2>ADA.NET Pōneke/Wellington symposium 2021</h2>
-            </Link>
-          </div>
-        </TempSymposium>
+      <TempSymposium>
+        <div className="symposium-container">
+          <img src={ImgSymposium}></img>
+          <Link
+            className="symposium-link"
+            to="http://localhost:8000/symposium2021/call-for-participation-ada-symposium-poneke-wellington-indeterminate-infrastructures-objects-signals-and-architectures/"
+          >
+            <h2>ADA.NET Pōneke/Wellington symposium 2021</h2>
+          </Link>
+        </div>
+      </TempSymposium>
 
-        <Artbase>
-          {posts.map(post => {
-            const title = post.title
-            const { nodes: tags } = post.tags
+      <Artbase>
+        {posts.map(post => {
+          const { title, excerpt, date, uri } = post
 
-            const featuredImage = {
-              fluid:
-                post.featuredImage?.node?.localFile?.childImageSharp?.fluid,
-              alt: post.featuredImage?.node?.alt || ``,
-            }
+          const { nodes: tags } = post.tags
 
-            console.log(featuredImage)
+          const featuredImage = {
+            fluid: post.featuredImage?.node?.localFile?.childImageSharp?.fluid,
+            alt: post.featuredImage?.node?.altText || ``,
+          }
 
-            return (
-              <li key={post.uri}>
-                {/* <Link
-                  to={post.uri}
-                  itemProp="url"
-                  className="post-list-item"
-                  itemScope
-                  itemType="http://schema.org/Article"
-                > */}
-                {featuredImage?.fluid && (
-                  <Link to={post.uri} itemProp="url">
-                    <Image
-                      fluid={featuredImage.fluid}
-                      alt={featuredImage.alt}
-                      style={{ width: "100%" }}
-                    />
+          return (
+            <li key={uri}>
+              {featuredImage?.fluid && (
+                <Link to={uri} itemProp="url">
+                  <Image
+                    fluid={featuredImage.fluid}
+                    alt={featuredImage.alt}
+                    style={{ width: "100%" }}
+                  />
+                </Link>
+              )}
+
+              <div className="artbase-info">
+                <h2>
+                  <Link to={uri} itemProp="url">
+                    <span itemProp="headline">{parse(title)}</span>
                   </Link>
-                )}
+                </h2>
 
-                <div className="artbase-info">
-                  <h2>
-                    <Link to={post.uri} itemProp="url">
-                      <span itemProp="headline">{parse(title)}</span>
-                    </Link>
-                  </h2>
-
-                  <div className="artbase-tags">
-                    {tags &&
-                      tags.map((tag, index) => {
-                        return (
-                          <span className="artbase-tag">
-                            {tag.name} {index !== tags.length - 1 && ""}
-                          </span>
-                        )
-                      })}
-                  </div>
-
-                  <div itemProp="description" className="artbase-excerpt">
-                    {parse(post.excerpt)}
-                  </div>
-                  <small className="artbase-date">{post.date}</small>
+                <div className="artbase-tags">
+                  {tags &&
+                    tags.map((tag, index) => {
+                      return (
+                        <Link to={tag.link} className="artbase-tag" key={index}>
+                          {tag.name} {index !== tags.length - 1}
+                        </Link>
+                      )
+                    })}
                 </div>
-                {/* </Link> */}
-              </li>
-            )
-          })}
-        </Artbase>
 
-        <ArtbaseNav>
-          {previousPagePath && <Link to={previousPagePath}>⇐</Link>}
-          {nextPagePath && <Link to={nextPagePath}>⇒</Link>}
-        </ArtbaseNav>
-      </>
+                <div itemProp="description" className="artbase-excerpt">
+                  {parse(excerpt)}
+                </div>
+                <small className="artbase-date">{date}</small>
+              </div>
+            </li>
+          )
+        })}
+      </Artbase>
+
+      <ArtbaseNav>
+        {previousPagePath && <Link to={previousPagePath}>⇐</Link>}
+        {nextPagePath && <Link to={nextPagePath}>⇒</Link>}
+      </ArtbaseNav>
     </Layout>
   )
 }
@@ -268,6 +256,7 @@ export const pageQuery = graphql`
           nodes {
             id
             name
+            link
           }
         }
         excerpt

@@ -10,7 +10,6 @@ const Header = ({ title, isHomePage }) => {
     <HeaderContainer>
       {isHomePage ? (
         <div className="header-homepage">
-          {/* <h1>{parse(title)}</h1> */}
           <div className="header-info">
             <h1>
               <span>Aotearoa</span>
@@ -25,7 +24,6 @@ const Header = ({ title, isHomePage }) => {
           <img className="header-bg" src={bg}></img>
         </div>
       ) : (
-        // <Link to="/">X</Link>
         <span></span>
       )}
     </HeaderContainer>
