@@ -35,7 +35,7 @@ const BlogIndex = ({
           <img src={ImgSymposium}></img>
           <Link
             className="symposium-link"
-            to="http://localhost:8000/symposium2021/call-for-participation-ada-symposium-poneke-wellington-indeterminate-infrastructures-objects-signals-and-architectures/"
+            to="/symposium2021/call-for-participation-ada-symposium-poneke-wellington-indeterminate-infrastructures-objects-signals-and-architectures/"
           >
             <h2>ADA.NET Pōneke/Wellington symposium 2021</h2>
           </Link>
@@ -182,9 +182,6 @@ const Artbase = styled.ol`
     &-info {
       padding: 1.4rem 1.4rem 2.6rem;
       position: relative;
-      /* display: flex; */
-      /* flex-wrap: wrap; */
-      /* justify-content: space-between; */
     }
 
     &-excerpt {
@@ -203,9 +200,14 @@ const Artbase = styled.ol`
       display: inline-block;
       text-transform: uppercase;
       font-size: 0.6rem;
-      border: 1px solid black;
+      /* border: 1px solid black; */
+      background: black;
       padding: 0.4rem 0.8rem;
       margin: 0 0.2rem 0.2rem 0;
+
+      &:hover {
+        color: var(--color-primary-light);
+      }
     }
   }
 `

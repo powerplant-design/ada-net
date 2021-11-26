@@ -398,6 +398,7 @@ a:hover {
 /* NAVGATION */
 
 .nav-global a {
+  color: var(--color-primary-light);
   display: inline-block;
   text-transform: uppercase;
   /* margin-right: 8px; */

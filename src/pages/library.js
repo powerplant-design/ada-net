@@ -62,6 +62,10 @@ const LibraryCollection = styled.section`
     &:hover {
       background: var(--color-primary-light);
     }
+
+    &:nth-child(even) {
+      flex-direction: column-reverse;
+    }
   }
 
   .gatsby-image-wrapper {

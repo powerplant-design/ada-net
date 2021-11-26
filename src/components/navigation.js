@@ -53,11 +53,7 @@ const Navigation = ({ isHomePage }) => {
             <span>Contribute</span>
           </NavLink>
 
-          <NavLink
-            to="/symposium2021/call-for-participation-ada-symposium-poneke-wellington-indeterminate-infrastructures-objects-signals-and-architectures/"
-            activeClassName="nav-link--active"
-            onClick={() => setOpen(false)}
-          >
+          <NavLink to="/tag/symposium2021/" onClick={() => setOpen(false)}>
             <span>Symposium21</span>
           </NavLink>
 

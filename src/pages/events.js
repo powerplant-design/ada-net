@@ -79,6 +79,7 @@ export const query = graphql`
       filter: {
         categories: { nodes: { elemMatch: { name: { eq: "Events" } } } }
       }
+      sort: { fields: [date], order: DESC }
     ) {
       nodes {
         id
