@@ -21,7 +21,6 @@ const TagPage = ({ data }) => {
 }
 
 const TagPageContainer = styled.section`
-  /* background: blue; */
   .tag-page__title {
     background: black;
     padding: 1rem;

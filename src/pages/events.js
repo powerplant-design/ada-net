@@ -9,6 +9,9 @@ const Events = ({ data }) => {
   return (
     <Layout>
       <Seo title="Events" />
+      <EventsTitle>
+        <h1>Events</h1>
+      </EventsTitle>
       <EventsCollection>
         {data.allWpPost.nodes.map((post, index) => {
           const featuredImage = {
@@ -34,9 +37,20 @@ const Events = ({ data }) => {
   )
 }
 
+const EventsTitle = styled.div`
+  background: black;
+  padding: 1rem;
+
+  h1 {
+    color: var(--color-primary);
+  }
+`
+
 const EventsCollection = styled.section`
   display: grid;
+  gap: 2px;
   grid-template-columns: repeat(2, 1fr);
+  background: var(--color-primary-dark);
 
   @media screen and (min-width: 880px) {
     grid-template-columns: repeat(3, 1fr);
@@ -52,6 +66,7 @@ const EventsCollection = styled.section`
   }
 
   a {
+    background: white;
     border: 1px solid var(--color-primary-dark);
     transition: background 3000ms ease-out;
     display: flex;

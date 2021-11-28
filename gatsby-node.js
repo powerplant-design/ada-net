@@ -88,7 +88,7 @@ async function createArtbase({ posts, gatsbyUtilities }) {
           // we want the first page to be "/" and any additional pages
           // to be numbered.
           // "/blog/2" for example
-          return page === 1 ? `/` : `/artbase/${page}`
+          return page === 1 ? `/artbase` : `/artbase/page/${page}`
         }
 
         return null

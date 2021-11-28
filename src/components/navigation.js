@@ -14,7 +14,16 @@ const Navigation = ({ isHomePage }) => {
       <Nav className="nav-global" open={open}>
         <NavWrapper className="nav-wrapper">
           <NavLink
-            to={isHomePage ? "#content-home" : "/"}
+            to="/"
+            activeClassName="nav-link--active"
+            onClick={() => setOpen(false)}
+          >
+            <span>ADA.NET.NZ</span>
+          </NavLink>
+
+          <NavLink
+            // to={isHomePage ? "#content-home" : "/"}
+            to="/artbase/"
             activeClassName="nav-link--active"
             onClick={() => setOpen(false)}
           >

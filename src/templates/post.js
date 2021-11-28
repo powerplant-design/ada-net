@@ -96,6 +96,14 @@ const Post = styled.article`
     font-variation-settings: "wdth" 120;
   }
 
+  /* FOOTNOTES PADDING FIX */
+  p[id*="note"] a:before {
+    content: "";
+    height: 45px;
+    margin-top: -45px;
+    display: block;
+  }
+
   header {
     @media screen and (min-width: 940px) {
       max-height: calc(100vh - 38px);
@@ -109,11 +117,18 @@ const Post = styled.article`
   }
 
   h1 {
-    color: var(--color-primary);
+    /* color: var(--color-primary); */
+    color: white;
     transition: color 300ms;
+    margin-bottom: 0.8rem;
+    font-size: 1.8rem;
 
     &:hover {
       color: var(--color-primary-light);
+    }
+
+    @media screen and (min-width: 940px) {
+      font-size: 3rem;
     }
   }
 
@@ -135,7 +150,6 @@ const Post = styled.article`
       margin: 0 0.4rem 0.4rem 0;
       color: var(--color-primary-light);
       background-color: var(--color-primary-dark);
-      /* border-radius: 2rem; */
 
       transition: color 300ms, background 300ms;
 
@@ -173,7 +187,6 @@ const PostNav = styled.nav`
   ul {
     margin: 0;
     display: flex;
-    /* flex-wrap: wrap; */
     justify-content: space-between;
     list-style: none;
     padding: 1rem;

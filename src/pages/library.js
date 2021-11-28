@@ -10,6 +10,9 @@ const Library = ({ data }) => {
   return (
     <Layout>
       <Seo title="Library" />
+      <LibraryTitle>
+        <h1>Library</h1>
+      </LibraryTitle>
       <LibraryCollection>
         {data.allWpPost.nodes.map((post, index) => {
           const featuredImage = {
@@ -35,9 +38,20 @@ const Library = ({ data }) => {
   )
 }
 
+const LibraryTitle = styled.div`
+  background: black;
+  padding: 1rem;
+
+  h1 {
+    color: var(--color-primary);
+  }
+`
+
 const LibraryCollection = styled.section`
   display: grid;
+  gap: 2px;
   grid-template-columns: repeat(2, 1fr);
+  background: var(--color-primary-dark);
 
   @media screen and (min-width: 880px) {
     grid-template-columns: repeat(3, 1fr);
@@ -53,11 +67,12 @@ const LibraryCollection = styled.section`
   }
 
   a {
-    border: 1px solid var(--color-primary-dark);
+    /* border: 1px solid var(--color-primary-dark); */
     transition: background 3000ms ease-out;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    background: white;
 
     &:hover {
       background: var(--color-primary-light);

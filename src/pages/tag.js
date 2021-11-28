@@ -24,9 +24,9 @@ const Tag = ({ data }) => {
 const TagsList = styled.section`
   background: black;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   @media only screen and (min-width: 880px) {
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(8, 1fr);
   }
   /* gap: 1rem; */
 

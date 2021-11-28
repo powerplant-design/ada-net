@@ -9,7 +9,7 @@ import Seo from "../components/seo"
 
 import ImgSymposium from "../assets/ada-sym-green.gif"
 
-const BlogIndex = ({
+const ArtbaseIndex = ({
   data,
   pageContext: { nextPagePath, previousPagePath },
 }) => {
@@ -17,7 +17,7 @@ const BlogIndex = ({
 
   if (!posts.length) {
     return (
-      <Layout isHomePage>
+      <Layout>
         <Seo title="Artbase" />
         <p>
           No blog posts found. Add posts to your WordPress site and they'll
@@ -28,20 +28,8 @@ const BlogIndex = ({
   }
 
   return (
-    <Layout isHomePage>
+    <Layout>
       <Seo title="Artbase" />
-      <TempSymposium>
-        <div className="symposium-container">
-          <img src={ImgSymposium}></img>
-          <Link
-            className="symposium-link"
-            to="/symposium2021/call-for-participation-ada-symposium-poneke-wellington-indeterminate-infrastructures-objects-signals-and-architectures/"
-          >
-            <h2>ADA.NET Pōneke/Wellington symposium 2021</h2>
-          </Link>
-        </div>
-      </TempSymposium>
-
       <Artbase>
         {posts.map(post => {
           const { title, excerpt, date, uri } = post
@@ -72,6 +60,11 @@ const BlogIndex = ({
                   </Link>
                 </h2>
 
+                <div itemProp="description" className="artbase-excerpt">
+                  {parse(excerpt)}
+                </div>
+                <small className="artbase-date">{date}</small>
+
                 <div className="artbase-tags">
                   {tags &&
                     tags.map((tag, index) => {
@@ -82,11 +75,6 @@ const BlogIndex = ({
                       )
                     })}
                 </div>
-
-                <div itemProp="description" className="artbase-excerpt">
-                  {parse(excerpt)}
-                </div>
-                <small className="artbase-date">{date}</small>
               </div>
             </li>
           )
@@ -101,37 +89,7 @@ const BlogIndex = ({
   )
 }
 
-export default BlogIndex
-
-const TempSymposium = styled.section`
-  height: 100vh;
-  position: relative;
-  /* background: #75f954; */
-  background: #00fe28;
-
-  @media screen and (min-width: 940px) {
-    height: calc(100vh - 36px);
-  }
-
-  .symposium-link {
-    position: absolute;
-    bottom: 1rem;
-    z-index: 666;
-    display: block;
-  }
-
-  img {
-    width: 100%;
-    padding: 3rem 1rem;
-  }
-
-  h2 {
-    margin: 0 0 2rem 1rem;
-    @media screen and (min-width: 940px) {
-      text-align: center;
-    }
-  }
-`
+export default ArtbaseIndex
 
 const Artbase = styled.ol`
   list-style: none;
@@ -141,7 +99,6 @@ const Artbase = styled.ol`
   @media screen and (min-width: 940px) {
     grid-template-columns: 1fr 1fr;
   }
-  /* color: black; */
 
   .gatsby-image-wrapper {
     max-height: calc(100vh - 38px);
@@ -152,22 +109,13 @@ const Artbase = styled.ol`
     border-bottom: 1px solid var(--color-primary);
     @media screen and (min-width: 940px) {
       border: 1px solid var(--color-primary);
+      display: flex;
+      flex-direction: column;
+      &:nth-child(even) {
+        flex-direction: column-reverse;
+      }
     }
   }
-
-  /* li:first-child,
-  li:last-child {
-    grid-column: 1 / -1;
-  } */
-
-  /* a {
-    color: black;
-    display: block;
-    margin-top: 0;
-    &:hover {
-      color: black;
-    }
-  } */
 
   h2 {
     margin: 0 0 0.8rem;
@@ -180,7 +128,7 @@ const Artbase = styled.ol`
     }
 
     &-info {
-      padding: 1.4rem 1.4rem 2.6rem;
+      padding: 1.4rem 1.4rem 2rem;
       position: relative;
     }
 
@@ -193,6 +141,7 @@ const Artbase = styled.ol`
     }
 
     &-tags {
+      margin-top: 2.6rem;
       margin-bottom: 0.6rem;
     }
 

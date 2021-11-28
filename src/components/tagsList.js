@@ -81,13 +81,18 @@ const TagsList = ({ name }) => {
             )
           }
         )}
+      <Link to="/tag" className="tag-list__explore">
+        <h2>/tag</h2>
+      </Link>
     </TagsListContainer>
   )
 }
 
 const TagsListContainer = styled.section`
   display: grid;
+  gap: 2px;
   grid-template-columns: repeat(2, 1fr);
+  background: var(--color-primary-dark);
 
   @media screen and (min-width: 880px) {
     grid-template-columns: repeat(3, 1fr);
@@ -103,7 +108,8 @@ const TagsListContainer = styled.section`
   }
 
   a {
-    border: 1px solid var(--color-primary-dark);
+    /* border: 1px solid var(--color-primary-dark); */
+    background: white;
     transition: background 3000ms ease-out;
     display: flex;
     flex-direction: column;
@@ -127,6 +133,14 @@ const TagsListContainer = styled.section`
     @media screen and (min-width: 880px) {
       padding: 1.2rem 2rem 0.8rem 0.8rem;
     }
+  }
+
+  .tag-list__explore {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
   }
 `
 
