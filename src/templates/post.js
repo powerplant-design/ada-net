@@ -16,9 +16,11 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 
 const BlogPostTemplate = ({ data: { previous, next, post } }) => {
+  const altText = post.featuredImage?.node?.altText
+
   const featuredImage = {
     fluid: post.featuredImage?.node?.localFile?.childImageSharp?.fluid,
-    alt: post.featuredImage?.node?.alt || ``,
+    alt: altText !== "" ? altText : post.title,
   }
 
   const { nodes: tags } = post.tags

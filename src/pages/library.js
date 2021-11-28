@@ -15,10 +15,13 @@ const Library = ({ data }) => {
       </LibraryTitle>
       <LibraryCollection>
         {data.allWpPost.nodes.map((post, index) => {
+          const altText = post.featuredImage?.node?.altText
+
           const featuredImage = {
             fluid: post.featuredImage?.node?.localFile?.childImageSharp?.fluid,
-            alt: post.featuredImage?.node?.alt || ``,
+            alt: altText !== "" ? altText : post.title,
           }
+
           return (
             <Link to={post.uri} key={index}>
               <Image

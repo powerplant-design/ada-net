@@ -58,7 +58,7 @@ const TagsList = ({ name }) => {
           ({ id, title, excerpt, featuredImage, uri, date, tags }) => {
             const image = {
               fluid: featuredImage?.node?.localFile?.childImageSharp?.fluid,
-              alt: featuredImage?.node?.alt || ``,
+              alt: featuredImage?.node?.altText || ``,
             }
 
             return (

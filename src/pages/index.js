@@ -1,7 +1,6 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { Link } from "gatsby"
 import styled from "styled-components"
-import Image from "gatsby-image"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
@@ -11,10 +10,13 @@ import ImgSymposium from "../assets/ada-sym-green.gif"
 const Home = () => {
   return (
     <Layout isHomePage>
-      <Seo title="Artbase" />
+      <Seo title="Homepage" />
       <TempSymposium>
         <div className="symposium-container">
-          <img src={ImgSymposium}></img>
+          <img
+            src={ImgSymposium}
+            alt="inderterminate infrastructure text behind green background"
+          />
           <Link className="symposium-link" to="/tag/symposium2021/">
             <h2>ADA.NET Pōneke/Wellington symposium 2021</h2>
           </Link>

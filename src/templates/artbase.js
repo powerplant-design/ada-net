@@ -36,9 +36,11 @@ const ArtbaseIndex = ({
 
           const { nodes: tags } = post.tags
 
+          const altText = post.featuredImage?.node?.altText
+
           const featuredImage = {
             fluid: post.featuredImage?.node?.localFile?.childImageSharp?.fluid,
-            alt: post.featuredImage?.node?.altText || ``,
+            alt: altText !== "" ? altText : post.title,
           }
 
           return (

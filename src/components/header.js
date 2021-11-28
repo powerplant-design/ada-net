@@ -21,7 +21,11 @@ const Header = ({ title, isHomePage }) => {
               a web of sites
             </a>
           </div>
-          <img className="header-bg" src={bg}></img>
+          <img
+            className="header-bg"
+            src={bg}
+            alt="Space background with stars"
+          />
         </div>
       ) : (
         <span></span>
