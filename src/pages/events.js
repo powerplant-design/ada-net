@@ -69,7 +69,7 @@ const EventsCollection = styled.section`
 
   a {
     background: white;
-    border: 1px solid var(--color-primary-dark);
+    /* border: 1px solid var(--color-primary-dark); */
     transition: background 3000ms ease-out;
     display: flex;
     flex-direction: column;
