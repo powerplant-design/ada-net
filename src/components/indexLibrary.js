@@ -8,27 +8,19 @@ import styled from "styled-components"
 const IndexLibrary = () => {
   const data = useStaticQuery(graphql`
     {
-      allWpPost(filter: { id: { eq: "cG9zdDo3MDAx" } }, limit: 1) {
-        nodes {
-          id
-          title
-          excerpt
-          uri
-          date(formatString: "MMMM DD, YYYY")
-          tags {
-            nodes {
-              name
-            }
-          }
-          excerpt
-          featuredImage {
-            node {
-              altText
-              localFile {
-                childImageSharp {
-                  fluid(maxWidth: 2000, quality: 60) {
-                    ...GatsbyImageSharpFluid_tracedSVG
-                  }
+      wpPost(id: { eq: "cG9zdDo3MDAx" }) {
+        id
+        title
+        excerpt
+        uri
+        excerpt
+        featuredImage {
+          node {
+            altText
+            localFile {
+              childImageSharp {
+                fluid(maxWidth: 2000, quality: 60) {
+                  ...GatsbyImageSharpFluid_tracedSVG
                 }
               }
             }
@@ -38,46 +30,35 @@ const IndexLibrary = () => {
     }
   `)
 
-  //EXISTING QUERY THAT WAS WORKING DAMMIT!
-  // filter: {
-  //   categories: { nodes: { elemMatch: { name: { eq: "Library" } } } }
-  // }
+  //   console.log(data.wpPost)
 
-  //   console.log(data)
+  const altText = data.wpPost.featuredImage?.node?.altText
+
+  const featuredImage = {
+    fluid: data.wpPost.featuredImage?.node?.localFile?.childImageSharp.fluid,
+    alt: altText !== "" ? altText : data.wpPost.title,
+  }
+
   return (
-    <div>
-      <IndexLibraryContent>
-        {data.allWpPost.nodes.map((post, index) => {
-          const altText = post.featuredImage?.node?.altText
+    <IndexLibraryContent>
+      <div className="container">
+        <Image
+          fluid={featuredImage.fluid}
+          alt={featuredImage.alt}
+          style={{ width: "100%" }}
+        />
 
-          const featuredImage = {
-            fluid: post.featuredImage?.node?.localFile?.childImageSharp?.fluid,
-            alt: altText !== "" ? altText : post.title,
-          }
-
-          return (
-            <div className="container">
-              <Image
-                fluid={featuredImage.fluid}
-                alt={featuredImage.alt}
-                style={{ width: "100%" }}
-              />
-
-              <div className="info">
-                <h4>—Latest Publication</h4>
-                <h2>{post.title}</h2>
-                <p>{parse(post.excerpt)}</p>
-                <Link to={post.uri} key={index}>
-                  —READ ON
-                </Link>
-                <Link to="/library/">—EXPLORE LIBRARY</Link>
-                {/* <p>{post.date}</p> */}
-              </div>
-            </div>
-          )
-        })}
-      </IndexLibraryContent>
-    </div>
+        <div className="info">
+          <h4>—Latest Publication</h4>
+          <h2>{data.wpPost.title}</h2>
+          <p>{parse(data.wpPost.excerpt)}</p>
+          <Link to={data.wpPost.uri} key={data.wpPost.id}>
+            —READ ON
+          </Link>
+          <Link to="/library/">—EXPLORE LIBRARY</Link>
+        </div>
+      </div>
+    </IndexLibraryContent>
   )
 }
 
@@ -94,7 +75,6 @@ const IndexLibraryContent = styled.section`
   .container {
     color: black;
     display: grid;
-    /* align-content: center; */
     min-height: 100vh;
 
     @media screen and (min-width: 940px) {
@@ -102,7 +82,7 @@ const IndexLibraryContent = styled.section`
     }
 
     .info {
-      padding: 1rem 15% 2rem;
+      padding: 1rem 15% 4rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -112,9 +92,5 @@ const IndexLibraryContent = styled.section`
 
   .img-container {
     height: 100%;
-  }
-
-  img {
-    /* object-fit: cover; */
   }
 `

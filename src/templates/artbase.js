@@ -7,7 +7,7 @@ import Image from "gatsby-image"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
-import ImgSymposium from "../assets/ada-sym-green.gif"
+// import ImgSymposium from "../assets/ada-sym-green.gif"
 
 const ArtbaseIndex = ({
   data,
@@ -98,6 +98,9 @@ const Artbase = styled.ol`
   padding: 0;
   margin: 0;
   display: grid;
+  gap: 2px;
+  background: var(--color-primary);
+
   @media screen and (min-width: 940px) {
     grid-template-columns: 1fr 1fr;
   }
@@ -108,9 +111,10 @@ const Artbase = styled.ol`
 
   li {
     margin-bottom: 0;
-    border-bottom: 1px solid var(--color-primary);
+    background: white;
+    /* border-bottom: 1px solid var(--color-primary); */
     @media screen and (min-width: 940px) {
-      border: 1px solid var(--color-primary);
+      /* border: 1px solid var(--color-primary); */
       display: flex;
       flex-direction: column;
       &:nth-child(even) {

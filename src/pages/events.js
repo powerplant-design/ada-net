@@ -25,7 +25,7 @@ const Events = ({ data }) => {
               <Image
                 fluid={featuredImage.fluid}
                 alt={featuredImage.alt}
-                style={{ marginBottom: 50, width: "100%" }}
+                style={{ width: "100%" }}
               />
               <div className="events-list__post-info">
                 <h2>{post.title}</h2>
@@ -69,7 +69,6 @@ const EventsCollection = styled.section`
 
   a {
     background: white;
-    /* border: 1px solid var(--color-primary-dark); */
     transition: background 3000ms ease-out;
     display: flex;
     flex-direction: column;
@@ -77,6 +76,10 @@ const EventsCollection = styled.section`
 
     &:hover {
       background: var(--color-primary-light);
+    }
+
+    &:nth-child(even) {
+      flex-direction: column-reverse;
     }
   }
 

@@ -1,5 +1,5 @@
 import React from "react"
-import { Link, Image } from "gatsby"
+import { Link } from "gatsby"
 import styled from "styled-components"
 
 import Layout from "../components/layout"
@@ -39,7 +39,6 @@ export default Home
 const TempSymposium = styled.section`
   height: 80vh;
   position: relative;
-  /* background: #75f954; */
   background: #00fe28;
 
   @media screen and (min-width: 940px) {
@@ -58,7 +57,7 @@ const TempSymposium = styled.section`
     /* position: absolute; */
     margin-top: auto;
     bottom: 1rem;
-    z-index: 666;
+    /* z-index: 666; */
     display: block;
   }
 

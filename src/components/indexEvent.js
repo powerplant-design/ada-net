@@ -8,32 +8,19 @@ import styled from "styled-components"
 const IndexEvent = () => {
   const data = useStaticQuery(graphql`
     {
-      allWpPost(
-        filter: {
-          categories: { nodes: { elemMatch: { name: { eq: "Events" } } } }
-        }
-        limit: 1
-      ) {
-        nodes {
-          id
-          title
-          excerpt
-          uri
-          date(formatString: "MMMM DD, YYYY")
-          tags {
-            nodes {
-              name
-            }
-          }
-          excerpt
-          featuredImage {
-            node {
-              altText
-              localFile {
-                childImageSharp {
-                  fluid(maxWidth: 2000, quality: 60) {
-                    ...GatsbyImageSharpFluid_tracedSVG
-                  }
+      wpPost(id: { eq: "cG9zdDo2OTg1" }) {
+        id
+        title
+        excerpt
+        uri
+        excerpt
+        featuredImage {
+          node {
+            altText
+            localFile {
+              childImageSharp {
+                fluid(maxWidth: 2000, quality: 60) {
+                  ...GatsbyImageSharpFluid_tracedSVG
                 }
               }
             }
@@ -43,40 +30,35 @@ const IndexEvent = () => {
     }
   `)
 
+  //   console.log(data.wpPost)
+
+  const altText = data.wpPost.featuredImage?.node?.altText
+
+  const featuredImage = {
+    fluid: data.wpPost.featuredImage?.node?.localFile?.childImageSharp.fluid,
+    alt: altText !== "" ? altText : data.wpPost.title,
+  }
+
   return (
-    <div>
-      <IndexEventContent>
-        {data.allWpPost.nodes.map((post, index) => {
-          const altText = post.featuredImage?.node?.altText
-
-          const featuredImage = {
-            fluid: post.featuredImage?.node?.localFile?.childImageSharp?.fluid,
-            alt: altText !== "" ? altText : post.title,
-          }
-
-          return (
-            <div className="container">
-              <div className="info">
-                <h4>—Latest Event</h4>
-                <h2>{post.title}</h2>
-                <p>{parse(post.excerpt)}</p>
-                <Link to={post.uri} key={index}>
-                  —READ ON
-                </Link>
-                <Link to="/events/">—MORE EVENTS</Link>
-                {/* <p>{post.date}</p> */}
-              </div>
-              <Image
-                fluid={featuredImage.fluid}
-                alt={featuredImage.alt}
-                style={{ width: "100%" }}
-                className="image"
-              />
-            </div>
-          )
-        })}
-      </IndexEventContent>
-    </div>
+    <IndexEventContent>
+      <div className="container">
+        <div className="info">
+          <h4>—Upcoming Event</h4>
+          <h2>{data.wpPost.title}</h2>
+          <p>{parse(data.wpPost.excerpt)}</p>
+          <Link to={data.wpPost.uri} key={data.wpPost.id}>
+            —READ ON
+          </Link>
+          <Link to="/events/">—OTHER EVENTS</Link>
+        </div>
+        <Image
+          fluid={featuredImage.fluid}
+          alt={featuredImage.alt}
+          style={{ width: "100%" }}
+          className="image"
+        />
+      </div>
+    </IndexEventContent>
   )
 }
 
@@ -101,7 +83,7 @@ const IndexEventContent = styled.section`
     }
 
     .info {
-      padding: 1rem 15% 2rem;
+      padding: 1rem 15% 4rem;
       display: flex;
       flex-direction: column;
       justify-content: center;

@@ -108,7 +108,6 @@ const TagsListContainer = styled.section`
   }
 
   a {
-    /* border: 1px solid var(--color-primary-dark); */
     background: white;
     transition: background 3000ms ease-out;
     display: flex;

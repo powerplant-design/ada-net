@@ -16,13 +16,10 @@ const Footer = () => {
           INSTAGRAM
         </a>
       </p>
-      <a href="https://www.facebook.com/ADA.net.nz" rel="noreffer noopener">
-        METABOOK
-      </a>
       <p>
-        <Link href="/">
-          © {new Date().getFullYear()} Aotearoa Digital Arts Network
-        </Link>
+        <a href="https://www.facebook.com/ADA.net.nz" rel="noreffer noopener">
+          METABOOK
+        </a>
       </p>
       <p>
         <a
@@ -32,6 +29,11 @@ const Footer = () => {
         >
           Creative Commons licensed unless otherwise stated
         </a>
+      </p>
+      <p>
+        {/* <Link href="/"> */}© {new Date().getFullYear()} Aotearoa Digital
+        Arts Network
+        {/* </Link> */}
       </p>
     </FooterContainer>
   )
