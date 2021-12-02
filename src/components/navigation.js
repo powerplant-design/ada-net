@@ -21,6 +21,10 @@ const Navigation = ({ isHomePage }) => {
             <span>ADA.NET.NZ</span>
           </NavLink>
 
+          <NavLink to="/tag/symposium2021/" onClick={() => setOpen(false)}>
+            <span>Symposium21</span>
+          </NavLink>
+
           <NavLink
             // to={isHomePage ? "#content-home" : "/"}
             to="/artbase/"
@@ -60,10 +64,6 @@ const Navigation = ({ isHomePage }) => {
             onClick={() => setOpen(false)}
           >
             <span>Contribute</span>
-          </NavLink>
-
-          <NavLink to="/tag/symposium2021/" onClick={() => setOpen(false)}>
-            <span>Symposium21</span>
           </NavLink>
 
           <NavLinkExternal
